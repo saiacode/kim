@@ -1,36 +1,33 @@
+const CRYSTAL_SIZE = 500;
+const SIDES = 6;
+let PALETTE = [];
 
-
-const CRYSTAL_SIZE = 500
-const SIDES = 6
-
+const layers = [];
 
 function setup() {
-createCanvas(530,530, SVG)
-    noLoop()
-    angleMode(DEGREES)
-    rectMode(CENTER)
+  createCanvas(530, 530, SVG);
+
+  PALETTE = [
+    color(255, 52, 154), // pink
+    color(4, 0, 152), // blue
+  ];
+
+  noLoop();
+  angleMode(DEGREES);
+  rectMode(CENTER);
 }
 
 function draw() {
-    // const circles = new Circles()
-    // circles.render()
-    // const outlineShape = new OutlineShape()
-    // outlineShape.render()
-    // const simpleLines = new SimpleLines()
-    // simpleLines.render()
-    const ringOfShapes = new RingOfShapes()
-    ringOfShapes.render()
-    // const centeredShape = new CenteredShape()
-    // centeredShape.render()
-    // const dottedLines = new DottedLines()
-    // dottedLines.render()
+  layerConstructors.forEach((lcon) => {
+    let picker = random(1);
+    if (picker > lcon.weight) {
+      layers.push(lcon.init());
+    }
+  });
+
+  console.log(layers);
+
+  layers.forEach((layer) => {
+    layer.render();
+  });
 }
-
-
-
-
-
-
-
-
-
