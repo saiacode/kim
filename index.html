@@ -6,69 +6,19 @@
     <script src="lib/p5.svg.js"></script>
     <script src="sketch.js"></script>
     <script src="Layers.js"></script>
+    <script src="Extractor.js"></script>
     <script src="helpers.js"></script>
   </head>
-  <body>
+  <body style="background-color: white" onload="extract()">
     <div id="p5"></div>
 
     <form id="f1">
       <label for="fname">First name:</label>
-      <input type="text" id="fname" name="fname" onkeyup="drawLiveKim()"/><br /><br />
-      
+      <input type="text" id="fname" name="fname" /><br /><br />
+
       <input type="button" onclick="extract()" value="Crear Igram" />
     </form>
-    
-
-    <script>
-        
-      function extract() {
-
-        //   document.getElementById('defaultCanvas').innerHTML = "";
-console.log(document.getElementById("fname").value)
 
 
-        let firstName = document.getElementById("fname");
-        let totalName = firstName.value;
-
-        let alpha = totalName.length % 2;
-        let beta = totalName.charCodeAt(0)/255 || 1;
-
-        // totalName.forEach(char => console.log('char ', char))
-        for (i = 0; i < totalName.length; i++) {
-          console.log(
-            "pos" +
-              i +
-              "  " +
-              totalName[i] +
-              "charcode " +
-              totalName.charCodeAt(i)
-          );
-        }
-        NAME_TRANSLATED=true;
-        state = {
-  sides: totalName.length,
-  stepsOut: 4,
-  thinStroke: 3,
-  thickStroke: 5,
-    alpha,
-    beta,
-};
-        // SIDES = totalName.length;
-        draw()
-        // redraw()
-      }
-
-
-      function drawLiveKim() {
-          let name = document.getElementById("fname").value
-          if (name.length > 0) {
-              extract()
-          } else {
-              remove();
-              console.log('delete crystal')
-          }
-            console.log('name ', name)
-        }
-    </script>
   </body>
 </html>

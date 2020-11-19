@@ -27,12 +27,14 @@ const circles = (state) => {
     render: () => {
       noFill();
       stroke(state.layerColor);
-      strokeWeight(1);
-      push();
+      strokeWeight(3);
+        push();
+        numShapes = state.alpha;
+        angle = 360 / numShapes;
       //translate(width/2, height/2)
-      for (let i = 0; i <= state.numShapes; i++) {
+      for (let i = 0; i <= numShapes; i++) {
         ellipse(state.position, 0, state.shapeSize, state.shapeSize);
-        rotate(state.angle);
+        rotate(angle);
       }
       pop();
     },
@@ -132,13 +134,14 @@ const centeredShape = (state) => {
     render: () => {
       fill(state.layerColor);
       noStroke();
-      push();
+        push();
+        let randomShape = state.beta;
       // translate(width / 2, height / 2)
-      if (state.randomShape < 0.28) {
+      if (randomShape < 0.33) {
         rect(0, 0, state.shapeSize * 2, state.shapeSize * 2);
-      } else if (state.randomShape >= 0.28 && state.randomShape < 0.31) {
+      } else if (randomShape >= 0.33 && state.randomShape < 0.66) {
         ellipse(0, 0, state.shapeSize * 2, state.shapeSize * 2);
-      } else if (state.randomShape >= 0.31) {
+      } else if (randomShape >= 0.66) {
         rotate(state.angle / 2);
         hexagon(0, 0, state.shapeSize);
       }

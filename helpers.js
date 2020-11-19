@@ -84,7 +84,7 @@ const layerConstructors = [
         ...props,
         ...setState(state),
       }),
-    weight: 0.7,
+    weight: .6,
   },
   {
     name: "Circles",
@@ -93,7 +93,7 @@ const layerConstructors = [
         ...props,
         ...setState(state),
       }),
-    weight: 1,
+    weight: .6,
   },
   {
     name: "Simple Lines",

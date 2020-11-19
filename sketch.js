@@ -20,13 +20,13 @@ ALL_CRYSTALS = [];
 function setup() {
   const totalX = START + GRIDBOX * COLUMNS;
   const totalY = START + GRIDBOX * ROWS;
-    let cnv = createCanvas(totalX, totalY, SVG);
-    // cnv.parent('p5')
+    createCanvas(totalX, totalY, SVG);
 
   PALETTE = [
     color(255, 52, 154), // pink
     // color(120, 120, 120), // gray
     // color(0, 0, 0), // black
+    // color(255,255,255),
     color(4, 0, 152), // blue
   ];
 
@@ -37,7 +37,7 @@ function setup() {
 
 function draw() {
     if (NAME_TRANSLATED) {
-        console.log(state)
+        console.log('state : ' , state)
         // go to a point on the screen and draw a crystal
         // continue to do this until we run out of room
         for (let x = 0; x < COLUMNS; x++) {
@@ -45,15 +45,11 @@ function draw() {
                 const posX = START + x * GRIDBOX;
                 const posY = START + y * GRIDBOX;
                 const crystal = makeCrystal({ x: posX, y: posY });
-                console.log(crystal);
+                console.log('crystal : ', crystal);
                 ALL_CRYSTALS.push(crystal);
             }
             
         }
-    // } else { 
-    //     console.log('reloading...')
-    //     location.reload()
-    // }
 
     ALL_CRYSTALS.forEach((crystal) => {
       drawCrystal(crystal);
