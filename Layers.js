@@ -1,8 +1,12 @@
-const state = {
-  sides: SIDES,
+let state = {
+  sides: 1,
   stepsOut: 8,
   thinStroke: 1,
-  thickStroke: 3,
+    thickStroke: 3,
+    alpha: 0, 
+    beta: 0,
+    gamma: 0,
+  
 };
 
 const setState = (state) => {
@@ -14,7 +18,7 @@ const setState = (state) => {
 };
 
 const circles = (state) => {
-  state.shapeSize = (CRYSTAL_SIZE / 2) * 0.93;
+  state.shapeSize = (CRYSTAL_SIZE / 2) * 0.618;
   state.position = CRYSTAL_SIZE / 2 - state.shapeSize / 2;
 
   return {
@@ -65,8 +69,9 @@ const simpleLines = (state) => {
 };
 
 const outlineShape = (state) => {
-  state.weight = randomSelectTwo() ? state.thinStroke : state.thickStroke;
-  state.hexagonTrue = randomSelectTwo();
+  state.weight = state.thinStroke;
+//   state.weight = randomSelectTwo() ? state.thinStroke : state.thickStroke;
+  state.hexagonTrue = state.alpha;
 
   return {
     name: "Outline Shape",
@@ -116,7 +121,8 @@ const dottedLines = (state) => {
 };
 
 const centeredShape = (state) => {
-  state.randomShape = random(1);
+  state.randomShape = state.beta;
+//   state.randomShape = random(1);
   state.shapeSize =
     floor(random(state.stepsOut / 2, state.stepsOut - 2)) * state.singleStep;
 
@@ -128,11 +134,11 @@ const centeredShape = (state) => {
       noStroke();
       push();
       // translate(width / 2, height / 2)
-      if (state.randomShape < 0.1) {
+      if (state.randomShape < 0.28) {
         rect(0, 0, state.shapeSize * 2, state.shapeSize * 2);
-      } else if (state.randomShape >= 0.1 && state.randomShape < 0.6) {
+      } else if (state.randomShape >= 0.28 && state.randomShape < 0.31) {
         ellipse(0, 0, state.shapeSize * 2, state.shapeSize * 2);
-      } else if (state.randomShape >= 0.6) {
+      } else if (state.randomShape >= 0.31) {
         rotate(state.angle / 2);
         hexagon(0, 0, state.shapeSize);
       }

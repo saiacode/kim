@@ -75,7 +75,7 @@ const layerConstructors = [
         ...props,
         ...setState(state),
       }),
-    weight: 0.3,
+    weight: 1,
   },
   {
     name: "Centered Shape",
@@ -84,7 +84,7 @@ const layerConstructors = [
         ...props,
         ...setState(state),
       }),
-    weight: 0.3,
+    weight: 0.7,
   },
   {
     name: "Circles",
@@ -93,7 +93,7 @@ const layerConstructors = [
         ...props,
         ...setState(state),
       }),
-    weight: 0.3,
+    weight: 1,
   },
   {
     name: "Simple Lines",
@@ -102,7 +102,7 @@ const layerConstructors = [
         ...props,
         ...setState(state),
       }),
-    weight: 0.3,
+    weight: 1,
   },
   {
     name: "Dotted Lines",
@@ -111,7 +111,7 @@ const layerConstructors = [
         ...props,
         ...setState(state),
       }),
-    weight: 0.3,
+    weight: 1,
   },
   {
     name: "Ring of Shapes",
@@ -120,7 +120,7 @@ const layerConstructors = [
         ...props,
         ...setState(state),
       }),
-    weight: 0.3,
+    weight: 1,
   },
   {
     name: "Stepped Hexagons",
@@ -129,7 +129,7 @@ const layerConstructors = [
         ...props,
         ...setState(state),
       }),
-    weight: 0.1,
+    weight: 1,
   },
   {
     name: "Test Lines",
@@ -146,7 +146,8 @@ const layerConstructors = [
 
 const makeCrystal = (pos) => {
   const layers = layerConstructors.map((lcon) => {
-    let picker = random(1);
+    // let picker = random(1);
+    let picker = 0.8;
     const draw = picker > lcon.weight;
     // const draw = lcon.name === 'Test Lines'
     return lcon.init({
